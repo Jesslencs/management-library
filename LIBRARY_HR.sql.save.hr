@@ -1,0 +1,486 @@
+CREATE TABLE library_books(
+book_id NUMBER PRIMARY KEY,
+title VARCHAR2(100),
+author VARCHAR2(100),
+publishing_company VARCHAR2(100),
+year_of_publication VARCHAR2(4),
+quantity_available NUMBER
+);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (1, 'Pride and prejudice ', 'Jane Austen', 'Company A', '1813', 10);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (2, 'To Kill a Monckingbird', 'Harpeer Lee', 'Company B', '1960', 5);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (3, 'Of Mice and Men', 'John Steinbeck', 'Company B', '1937', 10);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (4, 'Wuthering Height', 'Emily Brontë', 'Company A', '2021', 5);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (5, 'Almond', 'Won-pyung Sohn', 'Company A', '2023', 10);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (6, 'In Order To live', 'Park Yeon-mi', 'Company B', '2015', 5);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (8, 'Harry Potter', 'JK', 'Company C', '1999', 5);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (9, 'No seu olhar ', 'Nicolas Spark', 'Company C', '2015', 10);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (10, 'Reinação de narizinho', 'Monteiro Lobato', 'Company B', '1931', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (11, 'O saci', 'Monteiro Lobato', ' Company B', '1921', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (12, 'A chave do tamanho ', 'Monteiro Lobato', 'company A', '1942', 5);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (13, 'Historia da tia nastacia ', 'Monteiro Lobato', 'Company A', '1937', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (14, 'Fabulas', 'Monteiro Lobato', Company B', '1992', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (15, 'caçadas de pedrinho ', 'Monteiro Lobato', 'Company D', '1933', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (16, 'Memories', 'author x', 'Comapany C', '1998', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (17, 'Memorias da emilia', 'Monteiro Lobato', 'Company A', '2022', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (18, 'Spencer', 'author y', 'Company A', '2022', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (19, 'ideias de jeca tatu', 'Monteiro Lobato', 'Company D', '1918', 5);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (20, 'urupes', 'Monteiro Lobato', 'Company C', '1918', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (21, 'Book table', 'author sw', 'Comapany D', '2022', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (22, 'Swann Arlaud', 'Swann Arlaud', 'Company A', '1999', 1);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (23, 'Book love', 'love', 'Company D', '2010', 5);
+
+INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+VALUES (24, 'baby', 'who', 'Company A', '2024', 1);
+
+SELECT * FROM library_books;
+
+
+CREATE TABLE library_clients(
+
+client_id NUMBER PRIMARY KEY,
+name  VARCHAR2(100),
+address VARCHAR2(50),
+email VARCHAR2 (100),
+telephone VARCHAR2(15)
+);
+
+INSERT INTO library_clients (client_id, name, address, email, telephone)
+VALUES (1, 'John Doe', '123 Main Street', 'john.doe@example.com', '123456789');
+
+INSERT INTO library_clients (client_id, name, address, email, telephone)
+VALUES (2, 'Jane Smith', '456 Oak Avenue', 'jane.smith@example.com', '987654321');
+
+INSERT INTO library_clients (client_id, name, address, email, telephone)
+VALUES (3, 'Amanda Souza', '123 Main Street', 'amanda.souza@example.com', '123456789');
+
+INSERT INTO library_clients (client_id, name, address, email, telephone)
+VALUES (4, 'Felipe Camelo', '456 Oak Avenue', 'felipe.camelo@example.com', '987654321');
+
+SELECT * FROM library_clients;
+
+CREATE TABLE library_loan (
+
+loan_id NUMBER PRIMARY KEY,
+client_id NUMBER,
+book_id NUMBER,
+loan_date DATE,
+returned VARCHAR2(1),
+FOREIGN KEY (client_id) REFERENCES clients (client_id),
+FOREIGN KEY (book_id) REFERENCES  books (book_id)
+);
+
+
+CREATE SEQUENCE library_books_seq START WITH 1 INCREMENT BY 1;
+
+
+SELECT library_books_seq.NEXTVAL FROM dual;
+ALTER SEQUENCE library_books_seq INCREMENT BY 1;
+
+
+---- deu muito certo!
+CREATE OR REPLACE PACKAGE library_package AS
+    PROCEDURE SP_ADD_LIBRARY_BOOKS(
+        p_title IN VARCHAR2,
+        p_author IN VARCHAR2,
+        p_publishing_company IN VARCHAR2,
+        p_year_of_publication IN VARCHAR2,
+        p_quantity_available IN NUMBER
+    );
+
+    PROCEDURE SP_DELETE_LIBRARY_BOOKS(
+        p_book_id IN NUMBER 
+    );
+END library_package;
+
+
+CREATE OR REPLACE PACKAGE BODY library_package AS
+    PROCEDURE SP_ADD_LIBRARY_BOOKS(
+        p_title IN VARCHAR2,
+        p_author IN VARCHAR2,
+        p_publishing_company IN VARCHAR2,
+        p_year_of_publication IN VARCHAR2,
+        p_quantity_available IN NUMBER
+    )
+    AS
+    BEGIN
+        INSERT INTO library_books (book_id, title, author, publishing_company, year_of_publication, quantity_available)
+        VALUES (library_books_seq.NEXTVAL, p_title, p_author, p_publishing_company, p_year_of_publication, p_quantity_available);
+        DBMS_OUTPUT.PUT_LINE('Book added successfully');
+    EXCEPTION
+        WHEN OTHERS THEN 
+            DBMS_OUTPUT.PUT_LINE('Error adding book'|| SQLERRM);
+    END SP_ADD_LIBRARY_BOOKS;
+
+    PROCEDURE SP_DELETE_LIBRARY_BOOKS(
+        p_book_id IN NUMBER 
+    )
+    AS
+    BEGIN
+        DELETE FROM library_books
+        WHERE book_id = p_book_id;
+        COMMIT; 
+        DBMS_OUTPUT.PUT_LINE('Book deleted successfully');
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            DBMS_OUTPUT.PUT_LINE('book not found');
+        WHEN OTHERS THEN 
+            DBMS_OUTPUT.PUT_LINE('Error deleting book '|| SQLERRM);
+    END SP_DELETE_LIBRARY_BOOKS;
+    
+END library_package;
+
+
+
+
+BEGIN
+    library_package.SP_ADD_LIBRARY_BOOKS('TESTANDO44', 'Conan Doyle', 'Company C', '1887', 5);
+    COMMIT;
+END;
+
+BEGIN
+    library_package.SP_DELETE_LIBRARY_BOOKS(35); -- Exclui o livro com book_id = 28
+    COMMIT; -- Confirma a transação
+END;
+
+
+SELECT * FROM library_books;
+
+
+
+
+SHOW ERRORS PACKAGE BODY LIBRARY_PACKAGE;
+
+
+
+CREATE OR REPLACE PACKAGE BODY library_loan_package AS
+    PROCEDURE SP_LOAN_BOOK_TO_CLIENT(
+        p_client_id IN NUMBER,
+        p_book_id IN NUMBER,
+        p_loan_date IN DATE
+    )
+    AS
+        v_quantity NUMBER;
+        v_loan_id NUMBER;
+    BEGIN
+        -- Verificar se o livro está disponível
+        SELECT quantity_available INTO v_quantity
+        FROM library_books
+        WHERE book_id = p_book_id
+        FOR UPDATE;
+
+        IF v_quantity > 0 THEN
+            -- Inserir o registro na tabela library_loan
+            INSERT INTO library_loan (loan_id, client_id, book_id, loan_date, returned)
+            VALUES (library_loan_seq.NEXTVAL, p_client_id, p_book_id, p_loan_date, 'N');
+            
+            
+                        SELECT library_loan_seq.CURRVAL INTO v_loan_id FROM dual;
+
+            
+            
+            
+             INSERT INTO library_loan_history (loan_id, client_id, book_id, loan_date, return_date)
+        VALUES (library_loan_seq.CURRVAL, p_client_id, p_book_id, p_loan_date, NULL);
+            
+            
+            
+
+            -- Atualizar a quantidade disponível do livro
+            UPDATE library_books
+            SET quantity_available = quantity_available - 1
+            WHERE book_id = p_book_id;
+
+            DBMS_OUTPUT.PUT_LINE('Book loaned to client');
+        ELSE
+            DBMS_OUTPUT.PUT_LINE('Book not available for loan');
+        END IF;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            DBMS_OUTPUT.PUT_LINE('Book not found');
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('Error when lending book '|| SQLERRM);
+    END SP_LOAN_BOOK_TO_CLIENT;
+
+
+
+    PROCEDURE SP_RETURN_BOOK(
+        p_loan_id IN NUMBER
+    )
+    AS
+        v_book_id NUMBER;
+        v_quantity_available NUMBER;
+    BEGIN
+        -- Obter o ID do livro emprestado
+        SELECT book_id INTO v_book_id
+        FROM library_loan
+        WHERE loan_id = p_loan_id
+        FOR UPDATE;
+
+        -- Obter a quantidade disponível do livro antes de devolver
+        SELECT quantity_available INTO v_quantity_available
+        FROM library_books
+        WHERE book_id = v_book_id
+        FOR UPDATE;
+
+        -- Atualizar a quantidade disponível do livro
+        UPDATE library_books
+        SET quantity_available = v_quantity_available + 1
+        WHERE book_id = v_book_id;
+
+        -- Atualizar o registro de empréstimo para marcá-lo como devolvido
+        UPDATE library_loan
+        SET returned = 'Y'
+        WHERE loan_id = p_loan_id;
+        
+        
+        -- Atualizar o registro no histórico de empréstimos com a data de devolução
+    UPDATE library_loan_history
+    SET return_date = SYSDATE
+    WHERE loan_id = p_loan_id;
+        
+        
+
+        DBMS_OUTPUT.PUT_LINE('book returned successfully');
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            DBMS_OUTPUT.PUT_LINE('Loan not found');
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('Error returning book'|| SQLERRM);
+    END SP_RETURN_BOOK;
+END library_loan_package;
+
+
+
+
+SELECT ll.loan_id
+FROM library_loan ll
+JOIN library_books lb ON ll.book_id = lb.book_id
+WHERE lb.book_id = 1 AND ll.returned = 'N';
+
+
+
+BEGIN
+    library_loan_package.SP_RETURN_BOOK(25);
+    COMMIT;
+END;
+
+
+BEGIN
+    library_loan_package.SP_LOAN_BOOK_TO_CLIENT(1, 4, SYSDATE); -- Exemplo: emprestando o livro com ID 2 para o cliente com ID 1
+    COMMIT;
+END;
+
+BEGIN
+    library_loan_package.SP_RETURN_BOOK(2); 
+    COMMIT;
+END;
+
+
+-- Verificar se o empréstimo foi registrado na tabela library_loan
+SELECT * FROM library_loan WHERE client_id = 1 AND book_id = 2;
+
+-- Verificar a quantidade disponível do livro na tabela library_books
+SELECT quantity_available FROM library_books WHERE book_id = 2;
+
+BEGIN
+    library_loan_package.SP_RETURN_BOOK(26); -- Devolvendo o livro com LOAN_ID 26
+    COMMIT;
+END;
+
+SELECT *
+FROM library_loan
+WHERE loan_id = 26; -- Verifica o status do empréstimo com LOAN_ID 26
+
+SELECT quantity_available
+FROM library_books
+WHERE book_id = 2; -- Verifica a quantidade disponível do livro com BOOK_ID 2
+
+
+SELECT * FROM library_books;
+
+
+
+
+
+CREATE TABLE library_search_results (
+    book_id NUMBER,
+    title VARCHAR2(255),
+    author VARCHAR2(255),
+    publishing_company VARCHAR2(255),
+    year_of_publication VARCHAR2(4),
+    quantity_available NUMBER
+);
+
+
+CREATE OR REPLACE PACKAGE library_search_package AS
+    TYPE book_cursor IS REF CURSOR;
+    
+    PROCEDURE SP_SEARCH_BOOK(
+        p_title IN VARCHAR2 DEFAULT NULL,
+        p_author IN VARCHAR2 DEFAULT NULL,
+        p_year IN VARCHAR2 DEFAULT NULL,
+        p_cursor OUT book_cursor
+    );
+END library_search_package;
+/
+
+CREATE OR REPLACE PACKAGE BODY library_search_package AS
+    PROCEDURE SP_SEARCH_BOOK(
+        p_title IN VARCHAR2 DEFAULT NULL,
+        p_author IN VARCHAR2 DEFAULT NULL,
+        p_year IN VARCHAR2 DEFAULT NULL,
+        p_cursor OUT book_cursor
+    )
+    AS
+    BEGIN
+        OPEN p_cursor FOR
+        SELECT *
+        FROM library_books
+        WHERE (p_title IS NULL OR title = p_title)
+          AND (p_author IS NULL OR author = p_author)
+          AND (p_year IS NULL OR year_of_publication = p_year);
+    END SP_SEARCH_BOOK;
+END library_search_package;
+
+
+DECLARE
+    v_cursor library_search_package.book_cursor;
+    v_book_id library_books.book_id%TYPE;
+    v_title library_books.title%TYPE;
+    v_author library_books.author%TYPE;
+    v_publishing_company library_books.publishing_company%TYPE;
+    v_year_of_publication library_books.year_of_publication%TYPE;
+    v_quantity_available library_books.quantity_available%TYPE;
+BEGIN
+    library_search_package.SP_SEARCH_BOOK('Pride and prejudice ', NULL, NULL, v_cursor);
+
+    LOOP
+        FETCH v_cursor INTO v_book_id, v_title, v_author, v_publishing_company, v_year_of_publication, v_quantity_available;
+        EXIT WHEN v_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE('Book ID: ' || v_book_id || ', Title: ' || v_title || ', Author: ' || v_author || ', Publishing Company: ' || v_publishing_company || ', Year: ' || v_year_of_publication || ', Quantity Available: ' || v_quantity_available);
+    END LOOP;
+
+    CLOSE v_cursor;
+END;
+
+
+
+SELECT * FROM library_search_results;
+
+
+SELECT COUNT(*) FROM library_search_results;
+
+SELECT COUNT (*) FROM library_books;
+
+SELECT * FROM library_books;
+
+
+
+
+CREATE TABLE library_loan_history (
+    loan_id NUMBER PRIMARY KEY,
+    client_id NUMBER,
+    book_id NUMBER,
+    loan_date DATE,
+    return_date DATE,
+    FOREIGN KEY (client_id) REFERENCES library_clients(client_id),
+    FOREIGN KEY (book_id) REFERENCES library_books(book_id)
+);
+
+
+DESC library_loan_history; 
+
+
+BEGIN
+    library_loan_package.SP_LOAN_BOOK_TO_CLIENT(1, 1, SYSDATE);
+    COMMIT;
+END;
+
+
+
+select * from library_books;
+
+
+SELECT * FROM library_loan_history WHERE client_id = 1 AND book_id = 1;
+
+
+
+
+ALTER TABLE library_loan ADD (PENALTY NUMBER);
+
+
+
+CREATE OR REPLACE TRIGGER apply_penalty
+BEFORE INSERT OR UPDATE ON library_loan
+FOR EACH ROW
+DECLARE
+    v_days_late NUMBER;
+BEGIN
+    IF :NEW.returned = 'N' AND SYSDATE > ADD_MONTHS(:NEW.loan_date, 2) THEN
+        v_days_late := TRUNC(SYSDATE - ADD_MONTHS(:NEW.loan_date, 2));
+        :NEW.penalty := v_days_late * 1.00; -- Assuming penalty is a column in library_loan to store the penalty amount
+    END IF;
+END;
+/
+
+
+SELECT * FROM all_triggers WHERE trigger_name = 'APPLY_PENALTY';
+
+
+
+
+INSERT INTO library_loan (loan_id, client_id, book_id, loan_date, returned)
+VALUES (1, 1, 1, SYSDATE - INTERVAL '2' MONTH, 'N');
+
+SELECT * FROM library_loan WHERE loan_id = 1;
+
+
+
+INSERT INTO library_loan (loan_id, client_id, book_id, loan_date, returned)
+VALUES (2, 1, 2, TO_DATE('01/01/2024', 'DD/MM/YYYY'), 'N');
+
+SELECT * FROM library_loan WHERE loan_id = 2;
