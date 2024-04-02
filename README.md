@@ -33,7 +33,7 @@ Para cada operação, como adicionar um livro ou emprestar um livro a um cliente
 
 Além disso, o sistema inclui triggers para aplicar multas automaticamente quando um livro não é devolvido dentro do prazo.
 
-#English version
+# English version
 
 This project is a library management system developed in Oracle PL/SQL. It allows for managing books, clients, loans, and returns, including search functionality and late return penalty tracking.
 
